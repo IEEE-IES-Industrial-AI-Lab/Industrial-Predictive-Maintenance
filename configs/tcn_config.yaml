@@ -1,0 +1,37 @@
+# TCN Model Configuration
+# For: TCNModel (models/tcn_model.py)
+# Task: Remaining Useful Life (RUL) regression on CMAPSS
+
+# --- Architecture ---
+input_size: 14           # number of sensor features
+num_channels:            # output channels per TCN block (dilation doubles each block)
+  - 64
+  - 64
+  - 128
+  - 128
+kernel_size: 3           # causal convolution kernel size
+dropout: 0.2
+
+# Resulting receptive field:
+#   RF = 2 * kernel_size * (2^n_blocks - 1) + 1
+#      = 2 * 3 * (16 - 1) + 1 = 91 timesteps
+
+# --- Training ---
+lr: 0.001
+weight_decay: 0.00001
+batch_size: 256
+epochs: 100
+patience: 15
+
+# --- Device ---
+device: auto
+
+# --- Dataset ---
+dataset:
+  name: CMAPSS
+  subset: FD001
+  max_rul: 125
+  window_size: 30
+  stride: 1
+  normalize: true
+  val_fraction: 0.1

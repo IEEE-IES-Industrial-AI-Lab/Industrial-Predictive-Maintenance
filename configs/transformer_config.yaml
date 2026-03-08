@@ -1,0 +1,32 @@
+# Transformer RUL Model Configuration
+# For: TransformerRULModel (models/transformer_rul.py)
+# Task: Remaining Useful Life (RUL) regression on CMAPSS
+
+# --- Architecture ---
+input_size: 14          # number of input features per timestep
+d_model: 128            # embedding dimension (must be divisible by n_heads)
+n_heads: 8              # number of multi-head attention heads
+n_layers: 3             # number of TransformerEncoder layers
+dim_feedforward: 256    # inner dimension of the position-wise FFN
+dropout: 0.1            # dropout in encoder layers and positional encoding
+max_seq_len: 512        # maximum sequence length for positional encoding precomputation
+
+# --- Training ---
+lr: 0.0005              # AdamW learning rate (lower than LSTM — Transformers are sensitive)
+weight_decay: 0.00001
+batch_size: 256
+epochs: 100
+patience: 15
+
+# --- Device ---
+device: auto
+
+# --- Dataset ---
+dataset:
+  name: CMAPSS
+  subset: FD001
+  max_rul: 125
+  window_size: 30
+  stride: 1
+  normalize: true
+  val_fraction: 0.1

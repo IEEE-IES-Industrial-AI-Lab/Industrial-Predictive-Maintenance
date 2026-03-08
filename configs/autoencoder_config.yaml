@@ -1,0 +1,37 @@
+# LSTM Autoencoder Anomaly Detection Configuration
+# For: LSTMAutoencoder (models/autoencoder_anomaly.py)
+# Task: Unsupervised bearing fault detection (CWRU / IMS / Paderborn)
+
+# --- Architecture ---
+input_size: 1           # 1 for univariate vibration signal; set to n_channels for multivariate
+hidden_size: 64         # LSTM hidden dimension for encoder and decoder
+num_layers: 2           # stacked LSTM layers in both encoder and decoder
+dropout: 0.1
+seq_len: 50             # input sequence length (must match dataset window_size)
+
+# --- Training ---
+lr: 0.001
+weight_decay: 0.00001
+batch_size: 128
+epochs: 80
+patience: 12
+
+# --- Anomaly detection ---
+threshold_percentile: 95  # calibration percentile: threshold = p95 of training reconstruction errors
+
+# --- Device ---
+device: auto
+
+# --- Dataset ---
+dataset:
+  name: CWRU
+  fault_sizes:
+    - normal
+    - "0.007"
+    - "0.014"
+    - "0.021"
+  channel: DE            # drive end accelerometer
+  window_size: 50
+  stride: 25
+  normalize: true
+  healthy_fraction: 0.5  # fraction of normal data used as training set for autoencoder

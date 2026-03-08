@@ -1,0 +1,29 @@
+# LSTM Predictive Model Configuration
+# For: LSTMPredictiveModel (models/lstm_predictive.py)
+# Task: Remaining Useful Life (RUL) regression on CMAPSS
+
+# --- Architecture ---
+input_size: 14          # number of sensor features (CMAPSS FD001: 14 after dropping near-zero sensors)
+hidden_size: 128        # LSTM hidden dimension
+num_layers: 2           # number of stacked LSTM layers
+dropout: 0.2            # dropout probability (applied between LSTM layers and in FC head)
+
+# --- Training ---
+lr: 0.001               # Adam learning rate
+weight_decay: 0.00001   # L2 regularisation coefficient
+batch_size: 256
+epochs: 100
+patience: 15            # early stopping patience (epochs without val_loss improvement)
+
+# --- Device ---
+device: auto            # "auto" | "cuda" | "cpu"
+
+# --- Dataset (used by benchmark runner) ---
+dataset:
+  name: CMAPSS
+  subset: FD001
+  max_rul: 125
+  window_size: 30
+  stride: 1
+  normalize: true
+  val_fraction: 0.1     # fraction of training data used for validation

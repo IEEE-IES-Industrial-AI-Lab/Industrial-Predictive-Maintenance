@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data files (large raw data — not committed)
+datasets/data/
+datasets/raw/
+datasets/processed/
+*.csv
+*.mat
+*.h5
+*.hdf5
+*.zip
+*.tar.gz
+*.gz
+
+# Model checkpoints
+checkpoints/
+*.pt
+*.pth
+*.onnx
+*.pb
+
+# Logs and outputs
+logs/
+runs/
+outputs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Benchmark outputs (generated at runtime)
+benchmarks/results/*.json
+benchmarks/results/*.csv
