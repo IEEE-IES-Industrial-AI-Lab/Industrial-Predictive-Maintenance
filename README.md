@@ -22,17 +22,16 @@ Industrial machines fail unexpectedly, causing costly unplanned downtime. This r
 
 The framework covers the full pipeline from raw sensor signals to deployment:
 
-- **Data loading** from 4 established industrial benchmark datasets
-- **Signal preprocessing** (filtering, normalization, feature extraction)
-- **4 SOTA deep learning models** (LSTM, Transformer, TCN, Autoencoder)
-- **Standardized evaluation** using domain-specific metrics (NASA asymmetric score)
-- **Deployment utilities** for edge inference and streaming pipelines
+- Data loading from 4 established industrial benchmark datasets
+- Signal preprocessing (filtering, normalization, feature extraction)
+- 4 SOTA deep learning models (LSTM, Transformer, TCN, Autoencoder)
+- Standardized evaluation using domain-specific metrics (NASA asymmetric score)
+- Deployment utilities for edge inference and streaming pipelines
 
 ---
 
 ## Table of Contents
 
-- [Features](#features)
 - [Architecture](#architecture)
 - [Datasets](#datasets)
 - [Models](#models)
@@ -41,21 +40,7 @@ The framework covers the full pipeline from raw sensor signals to deployment:
 - [Notebooks](#notebooks)
 - [Project Structure](#project-structure)
 - [Citation](#citation)
-
----
-
-## Features
-
-- Unified dataset loaders for NASA CMAPSS, IMS, Paderborn, and CWRU bearing datasets
-- Signal processing pipeline: bandpass filtering, wavelet denoising, Z-score and min-max normalization
-- Time-domain feature extraction (RMS, kurtosis, crest factor, Shannon entropy)
-- Frequency-domain feature extraction (FFT, PSD, spectral centroid, band energy)
-- 4 deep learning models with consistent `fit / predict / evaluate / save / load` API
-- NASA asymmetric scoring function — standard metric in PHM competitions
-- ONNX export and INT8 quantization for edge deployment
-- Real-time sliding window inference pipeline
-- 6 fully reproducible Jupyter notebooks with end-to-end tutorials
-- YAML-based hyperparameter configs for reproducible experiments
+- [Contributing](#contributing)
 
 ---
 
@@ -252,22 +237,42 @@ Industrial-Predictive-Maintenance/
 If you use this repository in your research, please cite:
 
 ```bibtex
-@misc{ieeies_predictive_maintenance_2025,
-  title  = {Industrial Predictive Maintenance: AI Pipelines for RUL Prediction and Fault Detection},
+@software{ieee_ies_predictive_maintenance_2025,
   author = {{IEEE IES Industrial AI Lab}},
+  title  = {Industrial Predictive Maintenance: AI Pipelines for RUL Prediction and Fault Detection},
   year   = {2025},
   url    = {https://github.com/IEEE-IES-Industrial-AI-Lab/Industrial-Predictive-Maintenance}
 }
 ```
 
+### Related Work
+
+- Saxena, A., et al. *Damage propagation modeling for aircraft engine run-to-failure simulation.* PHM 2008.
+- Li, X., et al. *Remaining useful life estimation in prognostics using deep convolution neural networks.* Reliability Engineering & System Safety, 2018.
+- Bahdanau, D., Cho, K., & Bengio, Y. *Neural machine translation by jointly learning to align and translate.* ICLR 2015.
+- Bai, S., Kolter, J. Z., & Koltun, V. *An empirical evaluation of generic convolutional and recurrent networks for sequence modeling.* arXiv:1803.01271, 2018.
+- Lee, J., et al. *Prognostics and health management design for rotary machinery systems.* Mechanical Systems and Signal Processing, 2014.
+
+---
+
+## Contributing
+
+Contributions are welcome. Please open an issue before submitting a pull request.
+
+Areas especially welcome:
+- Additional dataset loaders (FEMTO, PHM 2012)
+- N-CMAPSS (2021 NASA update) support
+- Model implementations from recent IEEE TIE / TII papers
+- Reproducible results on Paderborn and IMS benchmarks
+
 ---
 
 ## License
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
-Maintained by the <strong>IEEE Industrial Electronics Society — Industrial AI Lab</strong>
+Part of the <a href="https://github.com/IEEE-IES-Industrial-AI-Lab"><strong>IEEE IES Industrial AI Lab</strong></a> research initiative.
 </div>
