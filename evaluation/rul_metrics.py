@@ -132,10 +132,10 @@ def evaluate_rul(
     dict with keys: ``"rmse"``, ``"mae"``, ``"nasa_score"``, ``"phm_score"``
     """
     metrics = {
-        "rmse": rmse(y_true, y_pred),
-        "mae": mae(y_true, y_pred),
+        "rmse":       rmse(y_true, y_pred),
+        "mae":        mae(y_true, y_pred),
         "nasa_score": nasa_score(y_true, y_pred),
-        "phm_score": phm_score(y_true, y_pred),
+        "phm_score":  phm_score(y_true, y_pred),
     }
     if verbose:
         print("\n── RUL Evaluation Metrics ──────────────────")
@@ -178,7 +178,9 @@ def plot_rul_predictions(
     ax.plot([0, lim], [0, lim], "r--", linewidth=1.5, label="Perfect prediction")
     ax.set_xlabel("True RUL (cycles)")
     ax.set_ylabel("Predicted RUL (cycles)")
-    ax.set_title(f"{title}\nRMSE={rmse(y_true, y_pred):.2f}  MAE={mae(y_true, y_pred):.2f}")
+    ax.set_title(
+        f"{title}\nRMSE={rmse(y_true, y_pred):.2f}  MAE={mae(y_true, y_pred):.2f}"
+    )
     ax.legend()
 
     # Error distribution
